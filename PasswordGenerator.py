@@ -1,0 +1,21 @@
+import string
+import random
+import streamlit as st
+
+characters = string.ascii_letters + string.digits + string.punctuation
+
+def generate_password(length):
+    return ''.join(random.choice(characters) for i in range(length))
+
+
+def main():
+    st.title('Password Generator')
+
+    length = st.number_input('Enter the length of the password:', min_value=4, max_value=128)
+
+    if st.button('Generate Password'):
+        password = generate_password(length)
+        st.write('Generated Password:', password)
+
+if __name__ == '__main__':
+    main()
